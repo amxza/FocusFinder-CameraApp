@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Photoscope {
+  ASTROPHOTOGRAPHY
+  PORTRAIT
+  LANDSCAPE
+  STREET
+  SPORTS
+}
+
+enum Condition {
+  NEW
+  USED_EXCELLENT
+  USED_GOOD
+  USED_FAIR
+}
+
+model Customer {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  username       String          @unique
+  password       String
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  searchSessions SearchSession[]
+}
+
+model SearchSession {
+  id               String     @id @default(cuid())
+  targetScope      Photoscope
+  preferredBrand   String?
+  preferredMount   String?
+  maxBudget        Float
+  isBeginner       Boolean
+  prefferedQuality Condition?
+
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+
+  //recommendations Recommendation[]
+  createdAt DateTime @updatedAt
+}
