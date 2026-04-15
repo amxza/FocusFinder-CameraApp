@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
@@ -24,12 +25,15 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.6.0",
     "@types/pg": "^8.20.0",
     "eslint": "^10.2.0",
     "globals": "^17.4.0",
+    "jest": "^30.3.0",
     "jiti": "^2.6.1",
     "prisma": "^7.7.0",
+    "ts-jest": "^29.4.9",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1"
@@ -40,6 +44,7 @@
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
     "dotenv": "^17.4.1",
+    "ejs": "^5.0.2",
     "pg": "^8.20.0"
   }
 }

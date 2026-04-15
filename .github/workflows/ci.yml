@@ -1,0 +1,47 @@
+# Name of your workflow
+name: CI Pipeline
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events for the "main" branch
+  push:
+    branches: [ "main" ]
+  # Triggers the workflow on pull request events targeted at the "main" branch
+  pull_request:
+    branches: [ "main" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This job is named "build-and-test"
+  build-and-test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Sets up the Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a Long-Term Support (LTS) version of Node.js
+          cache: 'npm'       # Caches npm dependencies to speed up future runs
+
+      # 3. Installs all project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Runs the linter to check for code quality issues
+      - name: Lint code
+        run: npm run lint # Assumes you have a "lint" script in package.json
+
+      # 5. Runs Jest tests
+      - name: Run tests
+        run: npm test
+
+      # 6. Compiles TypeScript to JavaScript to ensure the build is successful
+      - name: Build project
+        run: npm run build
