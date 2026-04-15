@@ -1,9 +1,9 @@
 import { Customer } from '@prisma/client';
 
-// Extend the Express Request object with a 'user' property
 declare global {
   namespace Express {
-    // These declarations are merged into the official Express types
+    // We are intentionally creating an empty interface here to merge declarations.
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
     export interface User extends Customer {}
 
     export interface Request {
