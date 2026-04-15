@@ -24,7 +24,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.5.2",
+    "@types/node": "^25.6.0",
     "@types/pg": "^8.20.0",
     "eslint": "^10.2.0",
     "globals": "^17.4.0",
@@ -37,6 +37,8 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.7.0",
     "@prisma/client": "^7.7.0",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
     "dotenv": "^17.4.1",
     "pg": "^8.20.0"
   }
