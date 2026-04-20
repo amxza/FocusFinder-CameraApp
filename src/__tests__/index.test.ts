@@ -1,1 +1,2 @@
-export {};
+const sum = require('../index');
+
