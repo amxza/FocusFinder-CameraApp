@@ -32,7 +32,7 @@ jobs:
 
       # 3. Installs all project dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # 4. Runs the linter to check for code quality issues
       - name: Lint code
